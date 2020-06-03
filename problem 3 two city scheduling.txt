@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+int twoCitySchedCost(vector<vector<int>>& costs) {
+    int res=0;
+    for(int i=0;i<costs.size();i++)    
+    {int k=costs[i][0]-costs[i][1];
+     costs[i].insert(costs[i].begin(),k);
+    }
+    sort(costs.begin(),costs.end());
+    {for(int i=0;i<costs.size()/2;i++)
+    {res=res+(costs[i][1]+costs[i+costs.size()/2][2]);
+    }
+    }
+    return res;
+}
+int main()
+{costs=[[10,20],[30,200],[400,50],[30,20]]
+twoCitySchedCost(costs);
+return res;
+}
+
+
+output-110
+The first person goes to city A for a cost of 10.
+The second person goes to city A for a cost of 30.
+The third person goes to city B for a cost of 50.
+The fourth person goes to city B for a cost of 20.
+
+The total minimum cost is 10 + 30 + 50 + 20 = 110 to have half the people interviewing in each city.
