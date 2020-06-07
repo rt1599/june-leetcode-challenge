@@ -1,0 +1,31 @@
+// Day 7 of june Leetcode challenge
+
+// Problem 7
+// coin change 2
+
+// Example:
+
+// Input: amount = 5, coins = [1, 2, 5]
+//output:
+4
+Explanation: there are four ways to make up the amount:
+5=5
+5=2+2+1
+5=2+1+1+1
+5=1+1+1+1+1
+#include<bits/stdc++.h>
+using namespace std;
+ int change(int amount, vector<int>& coins) {
+    vector<int>dp(amount+1,0);
+    dp[0]=1;
+    for(int c:coins)
+    {for(int i=c;i<=amount;i++)
+    {dp[i]=dp[i]+dp[i-c];
+    }
+    }
+    return dp[amount];
+    }
+int main()
+{int a[]=[1,2,5]
+change(4,a);
+}
