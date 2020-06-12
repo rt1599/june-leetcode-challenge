@@ -27,39 +27,36 @@
 class RandomizedSet {
 public:
     /** Initialize your data structure here. */
-    vector<int>vec;
+    vector<int>v;
+    unordered_map<int,int>res;
     RandomizedSet() {
         
     }
     
     /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
     bool insert(int val) {
-    //vec.push_back(val);
-    //return true;
-    for(int i=0;i<vec.size();i++)
-    {if(vec[i]==val)
+    if(res.find(val)!=res.end())
         return false;
-    }
-    vec.push_back(val);
+    v.push_back(val);
+    res[val]=v.size()-1;
     return true;
     }
     
     /** Removes a value from the set. Returns true if the set contained the specified element. */
     bool remove(int val) {
-    for(int i=0;i<vec.size();i++)
-    {if(vec[i]==val)
-    {vec.erase(vec.begin()+i);
+    if(res.find(val)==res.end())
+        return false;
+    int last=v.back();
+    res[last]=res[val];
+    v[res[val]]=last;
+    v.pop_back();
+    res.erase(val);
     return true;
-    }    
-    }
-     return false;   
     }
     
     /** Get a random element from the set. */
     int getRandom() {
-    //if(vec.size()==0)
-      //  return 0;
-    return vec[rand() % vec.size()];
+     return v[rand()%v.size()];   
     }
 };
 
